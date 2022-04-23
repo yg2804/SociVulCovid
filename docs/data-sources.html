@@ -4,27 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Data sources | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 2 Data sources | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>Chapter 2 Data sources | Social Vulnerability in COVID-19</title>
+  <meta name="description" content="Chapter 2 Data sources | Social Vulnerability in COVID-19" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Data sources | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 2 Data sources | Social Vulnerability in COVID-19" />
   <meta property="og:type" content="book" />
-  
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Data sources | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 2 Data sources | Social Vulnerability in COVID-19" />
   
   
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Ying Gao, Lyu Peng" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-transformation.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,10 @@
 
 
 
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 
@@ -68,7 +69,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">SociVulCovid</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -89,7 +90,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Social Vulnerability in COVID-19</a>
           </h1>
         </div>
 
@@ -97,8 +98,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sources" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
+<div id="data-sources" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Data sources<a href="data-sources.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>djkabviueiUGFnkch</p>
+<pre><code>## # A tibble: 6 x 124
+##   ST    STATE   ST_ABBR COUNTY  FIPS  LOCATION AREA_SQMI E_TOTPOP M_TOTPOP  E_HU
+##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+## 1 19    IOWA    IA      Hancock 19081 Hancock~      571.    10888        0  5311
+## 2 18    INDIANA IN      Miami   18103 Miami C~      374.    35901        0 15433
+## 3 20    KANSAS  KS      Staffo~ 20185 Staffor~      792.     4214        0  2339
+## 4 18    INDIANA IN      Montgo~ 18107 Montgom~      505.    38276        0 16638
+## 5 18    INDIANA IN      Rush    18139 Rush Co~      408.    16704        0  7493
+## 6 19    IOWA    IA      Bremer  19017 Bremer ~      435.    24782        0 10314
+## # ... with 114 more variables: M_HU &lt;dbl&gt;, E_HH &lt;dbl&gt;, M_HH &lt;dbl&gt;, E_POV &lt;dbl&gt;,
+## #   M_POV &lt;dbl&gt;, E_UNEMP &lt;dbl&gt;, M_UNEMP &lt;dbl&gt;, E_PCI &lt;dbl&gt;, M_PCI &lt;dbl&gt;,
+## #   E_NOHSDP &lt;dbl&gt;, M_NOHSDP &lt;dbl&gt;, E_AGE65 &lt;dbl&gt;, M_AGE65 &lt;dbl&gt;,
+## #   E_AGE17 &lt;dbl&gt;, M_AGE17 &lt;dbl&gt;, E_DISABL &lt;dbl&gt;, M_DISABL &lt;dbl&gt;,
+## #   E_SNGPNT &lt;dbl&gt;, M_SNGPNT &lt;dbl&gt;, E_MINRTY &lt;dbl&gt;, M_MINRTY &lt;dbl&gt;,
+## #   E_LIMENG &lt;dbl&gt;, M_LIMENG &lt;dbl&gt;, E_MUNIT &lt;dbl&gt;, M_MUNIT &lt;dbl&gt;,
+## #   E_MOBILE &lt;dbl&gt;, M_MOBILE &lt;dbl&gt;, E_CROWD &lt;dbl&gt;, M_CROWD &lt;dbl&gt;, ...</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
 </div>
             </section>
@@ -111,7 +130,6 @@
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -130,6 +148,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -138,7 +157,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/02-data.Rmd",
+"link": "https://github.com/yg2804/SociVulCovid/edit/main/02-data.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -146,10 +165,14 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/02-data.Rmd",
+"link": "https://github.com/yg2804/SociVulCovid/blob/main/02-data.Rmd",
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
