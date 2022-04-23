@@ -6,6 +6,6 @@ library(tidyverse)
 setwd("C:\\Users\\irene\\Desktop\\5293 graphics\\final_project")
 sv <- read_csv("Social_Vulnerability_Index_2018_United_States_county.csv")
 head(sv)
-ggplot(data=mtcars, aes(x=mpg)) + geom_bar()
+ggplot(data=mtcars, aes(x=mpg)) + geom_bar() 
 ```
 
