@@ -32,6 +32,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-transformation.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,9 +50,8 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 
@@ -98,26 +98,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sources" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Data sources<a href="data-sources.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-sources" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Data sources</h1>
 <p>djkabviueiUGFnkch</p>
 <pre><code>## # A tibble: 6 x 124
-##   ST    STATE   ST_ABBR COUNTY  FIPS  LOCATION AREA_SQMI E_TOTPOP M_TOTPOP  E_HU
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
-## 1 19    IOWA    IA      Hancock 19081 Hancock~      571.    10888        0  5311
-## 2 18    INDIANA IN      Miami   18103 Miami C~      374.    35901        0 15433
-## 3 20    KANSAS  KS      Staffo~ 20185 Staffor~      792.     4214        0  2339
-## 4 18    INDIANA IN      Montgo~ 18107 Montgom~      505.    38276        0 16638
-## 5 18    INDIANA IN      Rush    18139 Rush Co~      408.    16704        0  7493
-## 6 19    IOWA    IA      Bremer  19017 Bremer ~      435.    24782        0 10314
-## # ... with 114 more variables: M_HU &lt;dbl&gt;, E_HH &lt;dbl&gt;, M_HH &lt;dbl&gt;, E_POV &lt;dbl&gt;,
-## #   M_POV &lt;dbl&gt;, E_UNEMP &lt;dbl&gt;, M_UNEMP &lt;dbl&gt;, E_PCI &lt;dbl&gt;, M_PCI &lt;dbl&gt;,
-## #   E_NOHSDP &lt;dbl&gt;, M_NOHSDP &lt;dbl&gt;, E_AGE65 &lt;dbl&gt;, M_AGE65 &lt;dbl&gt;,
-## #   E_AGE17 &lt;dbl&gt;, M_AGE17 &lt;dbl&gt;, E_DISABL &lt;dbl&gt;, M_DISABL &lt;dbl&gt;,
-## #   E_SNGPNT &lt;dbl&gt;, M_SNGPNT &lt;dbl&gt;, E_MINRTY &lt;dbl&gt;, M_MINRTY &lt;dbl&gt;,
-## #   E_LIMENG &lt;dbl&gt;, M_LIMENG &lt;dbl&gt;, E_MUNIT &lt;dbl&gt;, M_MUNIT &lt;dbl&gt;,
-## #   E_MOBILE &lt;dbl&gt;, M_MOBILE &lt;dbl&gt;, E_CROWD &lt;dbl&gt;, M_CROWD &lt;dbl&gt;, ...</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+##   ST    STATE ST_ABBR COUNTY FIPS  LOCATION AREA_SQMI E_TOTPOP M_TOTPOP  E_HU  M_HU
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 19    IOWA  IA      Hanco~ 19081 Hancock~      571.    10888        0  5311    85
+## 2 18    INDI~ IN      Miami  18103 Miami C~      374.    35901        0 15433   104
+## 3 20    KANS~ KS      Staff~ 20185 Staffor~      792.     4214        0  2339    30
+## 4 18    INDI~ IN      Montg~ 18107 Montgom~      505.    38276        0 16638    81
+## 5 18    INDI~ IN      Rush   18139 Rush Co~      408.    16704        0  7493    63
+## 6 19    IOWA  IA      Bremer 19017 Bremer ~      435.    24782        0 10314   127
+## # ... with 113 more variables: E_HH &lt;dbl&gt;, M_HH &lt;dbl&gt;, E_POV &lt;dbl&gt;, M_POV &lt;dbl&gt;,
+## #   E_UNEMP &lt;dbl&gt;, M_UNEMP &lt;dbl&gt;, E_PCI &lt;dbl&gt;, M_PCI &lt;dbl&gt;, E_NOHSDP &lt;dbl&gt;,
+## #   M_NOHSDP &lt;dbl&gt;, E_AGE65 &lt;dbl&gt;, M_AGE65 &lt;dbl&gt;, E_AGE17 &lt;dbl&gt;, M_AGE17 &lt;dbl&gt;,
+## #   E_DISABL &lt;dbl&gt;, M_DISABL &lt;dbl&gt;, E_SNGPNT &lt;dbl&gt;, M_SNGPNT &lt;dbl&gt;,
+## #   E_MINRTY &lt;dbl&gt;, M_MINRTY &lt;dbl&gt;, E_LIMENG &lt;dbl&gt;, M_LIMENG &lt;dbl&gt;, E_MUNIT &lt;dbl&gt;,
+## #   M_MUNIT &lt;dbl&gt;, E_MOBILE &lt;dbl&gt;, M_MOBILE &lt;dbl&gt;, E_CROWD &lt;dbl&gt;, M_CROWD &lt;dbl&gt;,
+## #   E_NOVEH &lt;dbl&gt;, M_NOVEH &lt;dbl&gt;, E_GROUPQ &lt;dbl&gt;, M_GROUPQ &lt;dbl&gt;, ...</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-361-1.png" width="672" /></p>
 
 </div>
             </section>
