@@ -1,6 +1,6 @@
 --- 
-title: "project"
-author: "YOUR NAMES HERE"
+title: "Social Vulnerability in COVID-19"
+author: "Ying Gao, Lyu Peng"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
