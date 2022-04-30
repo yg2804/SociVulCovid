@@ -1,11 +1,16 @@
 # Data sources
-
-djkabviueiUGFnkch
+Data description 
+shape: 
 ```{r}
+library(readxl)
 library(tidyverse)
-setwd("C:\\Users\\irene\\Desktop\\5293 graphics\\final_project")
-sv <- read_csv("Social_Vulnerability_Index_2018_United_States_county.csv")
-head(sv)
-ggplot(data=mtcars, aes(x=mpg)) + geom_bar() 
-```
+library(readr)
+library(tmap)
+library(sf)
 
+setwd("C:\\Users\\irene\\Desktop\\5293 graphics\\final_project")
+shape <- read_sf("tl_2021_us_state\\tl_2021_us_state.shp")
+sv <- read_csv("Social_Vulnerability_Index_2018_United_States_county.csv")
+cov19_death <- read_tsv("covid_death.txt")
+la <- read_excel("la_homeless_covid.xlsx")
+```
