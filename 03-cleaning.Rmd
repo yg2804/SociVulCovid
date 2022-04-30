@@ -1,1 +1,51 @@
 # Data transformation
+
+Social Vulnerability Index 
+```{r}
+# length(sv$ST) # 3142
+# sum(is.na(sv))
+# unique(sv[c("STATE", "COUNTY")]) # 3142
+sv2 <- sv %>% select(ST, STATE, COUNTY, E_TOTPOP, E_POV, EP_POV, E_PCI, 
+                     E_NOHSDP, EP_AGE65, EP_AGE17, EP_MINRTY, E_UNEMP, 
+                     EP_UNEMP) %>%
+  mutate(EP_NOHSDP = round(E_NOHSDP/E_TOTPOP*100, 2)) %>%
+  filter(EP_POV >=0)
+# 
+head(sv2)
+
+```
+
+COVID-19 Deaths
+```{r}
+cov19.death <- cov19_death %>% dplyr::select(-c(`Notes`, `Census Region Code`, `State Code`, `County Code`, `Race Code`, `Crude Rate`))
+# cov19.death
+# unique(cov19.death$Race)
+# cov19.death %>% filter(is.na(`Census Region`))
+cov19.death <- cov19.death %>% filter(!is.na(`Census Region`))
+head(cov19.death)
+
+```
+
+2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA
+```{r}
+la <- la[-1, ]
+la2 <- la%>% select(age, female, race2, housing2, years_homeless, phq4_dum, 
+                      phq4_sum, fear_sum2, sd_sum3, at02_official_any, 
+                      at02__newspapersradioortv, at02_ff_any, vacc_hes,
+                      vacc_offered, vacc_if)
+col.names <- c("Age", "Gender", "Race", "Housing")
+colnames(la2)[1:4] <- col.names
+
+hes.reason <- la %>% select(reason_risk, reason_protection, 
+                            reason_information, reason_sideeffect,
+                            reason_moreppl, reason_novax, reason_riskgroup, 
+                            reason_afford) %>% drop_na()
+
+head(la2)
+# hes.reason
+```
+
+Geo Data
+```{r}
+head(shape)
+```

@@ -1,16 +1,30 @@
 # Data sources
 Data description 
-shape: 
 ```{r}
 library(readxl)
 library(tidyverse)
 library(readr)
 library(tmap)
 library(sf)
+library(redav)
+library(mi)
+library(tigris)
+
+library(GGally)
+library(ggpmisc)
+library(gridExtra)
+library(grid)
+library(parcoords)
+library(plotly)
+
+library(vcd)
+library(RColorBrewer)
 
 setwd("C:\\Users\\irene\\Desktop\\5293 graphics\\final_project")
 shape <- read_sf("tl_2021_us_state\\tl_2021_us_state.shp")
 sv <- read_csv("Social_Vulnerability_Index_2018_United_States_county.csv")
 cov19_death <- read_tsv("covid_death.txt")
 la <- read_excel("la_homeless_covid.xlsx")
+vaccinated <- read_csv("us_state_vaccinations.csv")
+
 ```
