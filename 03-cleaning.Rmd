@@ -49,3 +49,18 @@ Geo Data
 ```{r}
 head(shape)
 ```
+
+Vaccination by Race 
+```{r}
+colnames(vaccine_by_race)[1] <- "state"
+colnames(vaccine_by_race)[2] <- "percent of white vaccinted"
+colnames(vaccine_by_race)[3] <- "percent of black vaccinted"
+colnames(vaccine_by_race)[4] <- "percent of Hispanic vaccinted"
+colnames(vaccine_by_race)[5] <- "percent of Asian vaccinted"
+
+
+vaccine_by_race[(vaccine_by_race)== "NR"] <- NA
+
+colSums(is.na(vaccine_by_race)) %>% sort(decreasing = TRUE)
+vaccine_by_race %>% filter(is.na(`percent of Hispanic vaccinted`)) %>% pull(state)
+```

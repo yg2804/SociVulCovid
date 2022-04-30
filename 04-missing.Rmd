@@ -1,1 +1,116 @@
 # Missing values
+has missing value or not for each dataset 
+
+LA missing Value 
+Check if the dataset has missing value 
+LA has 619 missing values 
+```{r}
+pd <- la[-1, ]
+
+# check if our data has NAs 
+sum(is.na(pd))
+```
+
+```{r}
+# by row 
+# rowSums(is.na(pd)) %>%
+#   sort(decreasing = TRUE)
+
+library(mi)
+m_values <- missing_data.frame(as.data.frame(pd))
+image(m_values)
+
+# summary(m_values@patterns)
+
+# by columns 
+pd_missing <- pd %>% 
+    rownames_to_column("id") %>% 
+    gather(key, value, -id) %>% 
+    mutate(missing = ifelse(is.na(value), 1, 0))
+
+pd_cal <- pd_missing %>% 
+  group_by(key) %>%
+  summarize(na_cnt = sum(missing)) %>%
+  ungroup() %>%
+  arrange(desc(na_cnt))
+
+library(redav)
+# plot_missing(pd, percent = FALSE)
+plot_missing(pd)
+
+pdv <- pd
+
+# the reason for vaccination hesitancy 
+pdv_race <- pdv %>% 
+  group_by(race2) %>% 
+  summarize(num_race = n(), num_na = sum(is.na(reason_risk))) %>% 
+  mutate(percent_na = round(num_na/num_race, 2)) %>% 
+  arrange(-percent_na)
+
+pdv_sex <- pdv %>% 
+  group_by(female) %>% 
+  summarize(num_sex = n(), num_na = sum(is.na(reason_risk))) %>% 
+  mutate(percent_na = round(num_na/num_sex, 2)) %>% 
+  arrange(-percent_na)
+
+pdv <- pdv %>% mutate(age = as.integer(age))
+pdva <- pdv %>% 
+  mutate(age_range = case_when(age <= 35 ~ "<=35", 
+                               age > 35 & age <= 50 ~ "35-55", 
+                               age > 50 & age <= 65 ~ "50-65", 
+                               age > 65 ~ ">65"))
+pdva_age <- pdva %>%
+  group_by(age_range) %>%
+  summarize(num_age = n(), num_na = sum(is.na(reason_risk))) %>%
+  mutate(percent_na = round(num_na/num_age, 2)) %>%
+  arrange(-percent_na)
+
+ggplot(data=pdva_age, aes(x=fct_reorder(as.factor(age_range), percent_na), y=percent_na)) + 
+  geom_col(fill="lightblue")
+
+
+# vacc_if (If offered COVID-19 vaccine, would you take it?)
+
+pdvif_race <- pdv %>% 
+  group_by(race2) %>% 
+  summarize(num_race = n(), num_na = sum(is.na(vacc_if))) %>% 
+  mutate(percent_na = round(num_na/num_race, 2)) %>% 
+  arrange(-percent_na)
+
+pdvif_sex <- pdv %>% 
+  group_by(female) %>% 
+  summarize(num_sex = n(), num_na = sum(is.na(vacc_if))) %>% 
+  mutate(percent_na = round(num_na/num_sex, 2)) %>% 
+  arrange(-percent_na)
+
+pdvif <- pdv %>% mutate(age = as.integer(age))
+pdvaif <- pdv %>% 
+  mutate(age_range = case_when(age <= 35 ~ "<=35", 
+                               age > 35 & age <= 50 ~ "35-55", 
+                               age > 50 & age <= 65 ~ "50-65", 
+                               age > 65 ~ ">65"))
+pdvaif_age <- pdva %>%
+  group_by(age_range) %>%
+  summarize(num_age = n(), num_na = sum(is.na(vacc_if))) %>%
+  mutate(percent_na = round(num_na/num_age, 2)) %>%
+  arrange(-percent_na)
+
+
+ggplot(data=pdvaif_age, aes(x=fct_reorder(as.factor(age_range), percent_na), y=percent_na)) + 
+  geom_col(fill="lightblue")
+
+
+```
+
+Vaccination by Race Missing value 
+```{r}
+vaccine_race <- vaccine_by_race %>% 
+    gather(key, value, -state) %>% 
+    mutate(missing = ifelse(is.na(value), "yes", "no"))
+ggplot(vaccine_race, aes(x = key, y = fct_rev(state), fill = missing)) +
+  geom_tile(color = "white") + 
+  ggtitle("mtcars with NAs added") +
+  scale_fill_viridis_d() + 
+  theme_bw()
+
+```

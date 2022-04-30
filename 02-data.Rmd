@@ -26,5 +26,6 @@ sv <- read_csv("Social_Vulnerability_Index_2018_United_States_county.csv")
 cov19_death <- read_tsv("covid_death.txt")
 la <- read_excel("la_homeless_covid.xlsx")
 vaccinated <- read_csv("us_state_vaccinations.csv")
+vaccine_by_race <- read_csv("Percent of total pop has received a cov19 vaccine by race.csv")
 
 ```
