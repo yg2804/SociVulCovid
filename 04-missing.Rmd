@@ -1,22 +1,17 @@
 # Missing values
-has missing value or not for each dataset 
-
-LA missing Value 
-Check if the dataset has missing value 
-LA has 619 missing values 
+We noticed that two of our datasets have missing values. For the data of 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA, 619 values are missing. 
 ```{r}
 pd <- la[-1, ]
 
 # check if our data has NAs 
-sum(is.na(pd))
+# sum(is.na(pd))
 ```
 
+By analyzing the missing values by columns and based on the missing data plots, we can observe that most data of vaccination received is missing and the questions about reasons for COVID-19 vaccine hesitancy are lack of response.
 ```{r}
 # by row 
 # rowSums(is.na(pd)) %>%
-#   sort(decreasing = TRUE)
-
-library(mi)
+# sort(decreasing = TRUE)
 m_values <- missing_data.frame(as.data.frame(pd))
 image(m_values)
 
@@ -34,10 +29,19 @@ pd_cal <- pd_missing %>%
   ungroup() %>%
   arrange(desc(na_cnt))
 
-library(redav)
+```
+
+About 50% of all rows are following the pattern of missing both the vaccination reception and vaccine hesitancy reason response. There are very few rows missing demographic information and COVID-19 threat index including fear of COVID-19 and protective actions. 
+```{r}
 # plot_missing(pd, percent = FALSE)
 plot_missing(pd)
 
+```
+
+Hence, in our future analysis, if we would like to analyze the reasons that cause the hesitation of taking COVID-19 vaccination among the homelessness, the missing data might reduce the power of analysis and conclusion on this problem. 
+
+Moreover, we focused on the trend of the missing values and the possible relationship between the variables and NAs, especially for the reasons for vaccine hesitancy and the response of whether taking vaccine if offered one. The bar plots show that the percentages of missing values are higher among the data collected from the older people.
+```{r}
 pdv <- pd
 
 # the reason for vaccination hesitancy 
@@ -68,7 +72,10 @@ pdva_age <- pdva %>%
 ggplot(data=pdva_age, aes(x=fct_reorder(as.factor(age_range), percent_na), y=percent_na)) + 
   geom_col(fill="lightblue")
 
+```
 
+
+```{r}
 # vacc_if (If offered COVID-19 vaccine, would you take it?)
 
 pdvif_race <- pdv %>% 
@@ -99,10 +106,11 @@ pdvaif_age <- pdva %>%
 ggplot(data=pdvaif_age, aes(x=fct_reorder(as.factor(age_range), percent_na), y=percent_na)) + 
   geom_col(fill="lightblue")
 
-
 ```
 
-Vaccination by Race Missing value 
+Based on missing value heatmap, the pattern of missing values can be clearly observed and summarized. The x axis is the percentage of people with different race who got vaccinated, and y axis contains the states. 
+
+There are 7 states in total having missing values. There are missing values for every columns, and the missing pattern of percent of black vaccinated and percent of white vaccinated are the same. In other words, if values missing in the former, then the missing values are more likely to appear the later one. 
 ```{r}
 vaccine_race <- vaccine_by_race %>% 
     gather(key, value, -state) %>% 

@@ -52,6 +52,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/parallel-coordinates-2.1.8/parcoords.css" rel="stylesheet" />
+<script src="libs/parcoords-binding-1.0.1/parcoords.js"></script>
+<script src="libs/d3-5.16.0/d3.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 
@@ -73,10 +83,27 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#data-description"><i class="fa fa-check"></i><b>2.1</b> Data Description</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#social-vulnerability-index"><i class="fa fa-check"></i><b>3.1</b> Social Vulnerability Index</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#covid-19-deaths"><i class="fa fa-check"></i><b>3.2</b> COVID-19 Deaths</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca"><i class="fa fa-check"></i><b>3.3</b> 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#geographic-data"><i class="fa fa-check"></i><b>3.4</b> Geographic Data</a></li>
+<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#vaccination-by-race"><i class="fa fa-check"></i><b>3.5</b> Vaccination by Race</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#general-results"><i class="fa fa-check"></i><b>5.1</b> General Results</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#case-study-2021-covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca"><i class="fa fa-check"></i><b>5.2</b> Case Study: 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="results.html"><a href="results.html#analysis-of-hesitancy-of-vaccination-among-homelessness-based-on-limited-response"><i class="fa fa-check"></i><b>5.2.1</b> Analysis of Hesitancy of Vaccination among Homelessness based on Limited Response</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -100,11 +127,8 @@
             <section class="normal" id="section-">
 <div id="missing-values" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Missing values<a href="missing-values.html#missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>has missing value or not for each dataset</p>
-<p>LA missing Value
-Check if the dataset has missing value
-LA has 619 missing values</p>
-<pre><code>## [1] 619</code></pre>
+<p>We noticed that two of our datasets have missing values. For the data of 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA, 619 values are missing.</p>
+<p>By analyzing the missing values by columns and based on the missing data plots, we can observe that most data of vaccination received is missing and the questions about reasons for COVID-19 vaccine hesitancy are lack of response.</p>
 <pre><code>## NOTE: The following pairs of variables appear to have the same missingness pattern.
 ##  Please verify whether they are in fact logically distinct variables.
 ##       [,1]                        [,2]                       
@@ -141,9 +165,15 @@ LA has 619 missing values</p>
 ## [31,] &quot;at02_official_any&quot;         &quot;at02__newspapersradioortv&quot;
 ## [32,] &quot;at02_official_any&quot;         &quot;at02_ff_any&quot;              
 ## [33,] &quot;at02__newspapersradioortv&quot; &quot;at02_ff_any&quot;</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-12-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-12-3.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-12-4.png" width="672" /></p>
-<p>Vaccination by Race Missing value
+<p><img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>About 50% of all rows are following the pattern of missing both the vaccination reception and vaccine hesitancy reason response. There are very few rows missing demographic information and COVID-19 threat index including fear of COVID-19 and protective actions.
 <img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Hence, in our future analysis, if we would like to analyze the reasons that cause the hesitation of taking COVID-19 vaccination among the homelessness, the missing data might reduce the power of analysis and conclusion on this problem.</p>
+<p>Moreover, we focused on the trend of the missing values and the possible relationship between the variables and NAs, especially for the reasons for vaccine hesitancy and the response of whether taking vaccine if offered one. The bar plots show that the percentages of missing values are higher among the data collected from the older people.
+<img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Based on missing value heatmap, the pattern of missing values can be clearly observed and summarized. The x axis is the percentage of people with different race who got vaccinated, and y axis contains the states. There are 7 states in total having missing values. There are missing values for every columns, and the missing pattern of percent of black vaccinated and percent of white vaccinated are the same. In other words, if values missing in the one, then the missing values are more likely to appear in the other.
+<img src="finalproj_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 
 </div>
             </section>

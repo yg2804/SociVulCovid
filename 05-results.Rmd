@@ -1,1 +1,226 @@
 # Results
+## General Results 
+Based on the average income map, the pattern of the whole U.S. average income distribution geographically is observable. The range defined is from 20,000 dollars to 55,000 dollars per person every year. The regions with relatively high average income are located in northeastern America, and always concentrated on several adjacent states. 
+```{r}
+library(tigris)
+sv.income <- sv2 %>% group_by(ST, STATE) %>%
+  summarize(avg_income = mean(E_PCI))
+# head(sv.income)
+
+sv.income.shape <- shape %>% left_join(sv.income, by=c("STATEFP"="ST")) %>%
+  filter(REGION != 9) %>%
+  shift_geometry()
+tm_shape(sv.income.shape) + tm_polygons("avg_income") + tm_text("STUSPS", size=0.5) + tm_layout(legend.title.size=1,
+                      legend.text.size = 0.5,
+                      legend.position = c("left","top"))
+
+
+```
+
+We explore the population with low education level measured using the rate of people above 25 years old who have not finished their high school education as the index. The map plot shows the percentage of people above 25 without high school diploma is larger in the south of America than which in the north of America. There is a proper guess that the family education are more popular and developed in wealthy states rather than school education.
+```{r}
+sv.edu <- sv2 %>% group_by(ST, STATE) %>%
+  summarize(perc_without_hs = sum(E_NOHSDP)/sum(E_TOTPOP))
+# head(sv.income)
+
+sv.edu.shape <- shape %>% left_join(sv.edu, by=c("STATEFP"="ST")) %>%
+  filter(REGION != 9) %>%
+  shift_geometry()
+tm_shape(sv.edu.shape) + tm_polygons("perc_without_hs") + tm_text("STUSPS", size=0.5) + tm_layout(legend.title.size=1,
+                      legend.text.size = 0.5,
+                      legend.position = c("left","top"))
+
+```
+
+To quantitatively describe the average income and education level, two dimensional scatter plot presents the association between them. There is a obvious negative association between them, which means when education level of people is lower, the income they earn would be lower. 
+```{r}
+ggplot(data=sv2, aes(x=EP_NOHSDP, y=scale(E_PCI))) + geom_point(alpha=0.5)
+```
+
+The COVID-19 vaccination coverage rates are always greater than 0.5, and there are apparent geographic correlation and distinction. More specifically, vaccination coverage rates are extra high in the northeastern and adjacent states, while people do not show a such strong willing to accept the vaccine. Moreover, the distribution of the vaccination rates are positive related to the distribution of average income above. 
+```{r}
+sv.pop <- sv2 %>%
+  group_by(STATE) %>%
+  summarize(pop = sum(E_TOTPOP)) %>%
+  mutate(STATE = str_to_title(STATE))
+
+total <- vaccinated %>% filter(date == "2022-04-01") %>%
+  select(date, location, people_vaccinated)
+total$location[40] <- "New York" 
+sv.vacc <- sv.pop %>% left_join(total, by=c("STATE"="location")) %>% 
+  mutate(vacc_rate = people_vaccinated/pop)
+
+geom_new <- shape %>% left_join(sv.vacc, by = c("NAME"="STATE"))
+
+geom_new <- geom_new %>%
+  filter(REGION != 9) %>%
+  shift_geometry()
+
+tm_shape(geom_new) + tm_polygons("vacc_rate")+ tm_text("STUSPS", size=0.5) + tm_layout(legend.title.size=1,
+                      legend.text.size = 0.5, 
+                      legend.position = c("left","top"))
+```
+
+```{r}
+cov <- cov19.death %>% group_by(State) %>%
+  summarize(sum_deaths = sum(Deaths), sum_pop = sum(Population)) %>%
+  ungroup() %>% 
+  mutate(death_rate = sum_deaths/sum_pop) 
+
+cov <- cov %>% left_join(cov19.death, by="State") %>%
+  select(State, sum_deaths, sum_pop, death_rate, `Census Region`) %>%
+  mutate(`Census Region` = str_sub(`Census Region`, 18, -1))
+  
+cov <- distinct(cov)
+
+# head(cov)
+# sum(is.na(/ov))
+# head(sv2)
+
+svp <- sv2 %>% group_by(STATE) %>%
+  summarize(avg_income = mean(E_PCI), 
+            non_hs_rate = sum(E_NOHSDP)/sum(E_TOTPOP), 
+            unemp_rate = sum(E_UNEMP)/sum(E_TOTPOP), 
+            pov_rate = sum(E_POV)/sum(E_TOTPOP)) %>%
+  mutate(STATE = str_to_title(STATE))
+  
+vaccp <- sv.vacc
+
+dp <- cov %>% left_join(svp, by=c("State"="STATE")) %>%
+  left_join(vaccp,by=c("State"="STATE")) %>%
+  select(-c("sum_pop", "sum_deaths", "date", "pop", 
+            "people_vaccinated")) %>% drop_na()
+
+```
+
+```{r}
+sv.new <- sv.edu %>% left_join(sv.income) %>% subset(select= -ST) %>% mutate(STATE = str_to_title(STATE)) %>% mutate(perc_without_hs = round(perc_without_hs, 3))
+sv.new <- sv.new %>% dplyr::left_join(vaccine_by_race, by = c("STATE" = "state"))
+head(sv.new)
+
+sv.new <- sv.new %>% pivot_longer(cols = `percent of white vaccinted`:`percent of Asian vaccinted`, names_to = "race", values_to = "value")
+
+getcounty <- function(s){
+  sp <- str_split(s, " ")
+  return(sp[[1]][1])
+}
+
+covf <- cov19.death %>% 
+  mutate(County = sapply(County, getcounty)) %>% 
+  group_by(`Census Region`, State, County) %>%
+  summarize(death_rate = sum(Deaths)/sum(Population)*100, 
+            total_death = sum(Deaths)) %>%
+  mutate(`Census Region` = str_sub(`Census Region`, 18, -1))
+
+
+sv.cov <- sv2 %>% 
+  mutate(STATE = str_to_title(STATE)) %>%
+  inner_join(covf, by=c("STATE"="State", "COUNTY"="County")) %>%
+  select(`Census Region`, STATE, COUNTY, death_rate, total_death, E_POV, EP_POV, E_PCI, EP_NOHSDP, EP_UNEMP) %>%
+  distinct()
+
+
+# sv.cov %>% inner_join(sv.new)
+sv.cov<- sv.cov %>% group_by(`Census Region`,STATE) %>% summarize(s= sum(total_death))
+
+#sv.area <- sv.cov %>% left_join(sv.new) %>% select(`Census Region`, STATE, perc_without_hs, avg_income, `percent of white vaccinted`,`percent of black vaccinted`, `percent of Hispanic vaccinted`, `percent of Asian vaccinted`) %>% subset(select = -STATE)
+
+sv.new.p <- ggplot(data=sv.new, aes(x=as.numeric(value), y=avg_income, group=race, color=race)) +
+  geom_point(alpha=0.5, size=0.8) + 
+  geom_smooth(method="loess", se=FALSE, lwd=0.8)
+
+
+```
+
+In order to learn about the death rate in COVID-19 pandemic among total 4 U.S. Census Regions, facet plot shows the relationship between death rate, poverty rate and education level. A positive correlation between death rate and poverty rate shown in the South and West Census Region, while Middle and North Census Region has no apparent trend. In addition, all the plots suggest a positive association between education level and death rate.
+```{r}
+sv.cov <- sv2 %>% 
+  mutate(STATE = str_to_title(STATE)) %>%
+  inner_join(covf, by=c("STATE"="State", "COUNTY"="County")) %>%
+  select(`Census Region`, STATE, COUNTY, death_rate, total_death, E_POV, EP_POV, E_PCI, EP_NOHSDP, EP_UNEMP) %>%
+  distinct()
+
+sv.cov.pov <- ggplot(data=sv.cov, aes(x=EP_POV, y=death_rate)) + 
+  geom_point(alpha=0.5, aes(color=`Census Region`)) + 
+  facet_wrap(.~`Census Region`) +
+  geom_smooth(method = "lm", se=FALSE)
+sv.cov.pov
+
+sv.cov.nhs <- ggplot(data=sv.cov, aes(x=EP_NOHSDP, y=death_rate)) + 
+  geom_point(alpha=0.5, aes(color=`Census Region`)) + 
+  facet_wrap(.~`Census Region`) + 
+  geom_smooth(method = "lm", se=FALSE)
+
+sv.cov.nhs.p <- ggplot(data=sv.cov, aes(x=EP_NOHSDP, y=death_rate)) + 
+  geom_point(alpha=0.5, aes(color=`Census Region`))
+
+# ggplotly(sv.cov.nhs.p)
+
+sv.cov.nhs
+
+```
+
+## Case Study: 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA
+In this section, we would specifically pay attention to the attitudes toward COVID-19 among the homelessness in Los Angeles and deal with the demographic data and binary response collected from a related survey. The observable relationship will be presented and concluded below with the statistical graphics. 
+
+Based on the following mosaic plots, it is observable that females are more likely to be anxious about getting COVID-19 than males. People who are doubled up and live in hotels are less worried about COVID-19 than those who are sheltered or unsheltered.  
+```{r}
+fphq4 <- la2 %>% select(Gender, phq4_dum, fear_sum2) %>% drop_na()
+mosaic(fear_sum2 ~ phq4_dum + Gender, data=fphq4,
+       gp_varnames = gpar(fontsize = 10), 
+       gp_labels = gpar(fontsize = 5),
+       direction = c("h", "v", "v"))
+
+
+color2 <- brewer.pal(n = 5, name = 'PuBu')
+fear2 <- la2 %>% select(Race, Housing, fear_sum2) %>% drop_na()
+mosaic(fear_sum2 ~ Housing + Race, data=fear2, direction = c("h", "v", "v"), 
+       gp_varnames = gpar(fontsize = 10), 
+       gp_labels = gpar(fontsize = 5),
+       highlighting_fill = color2)
+
+
+```
+
+With this limited data, the boxplot presents a increase in COVID-19 protective score among people have been experiencing homelessness for a longer time. 
+```{r}
+yp <- la2 %>% select(years_homeless, sd_sum3) %>% drop_na() 
+ggplot(data=yp, aes(x=sd_sum3, y=as.numeric(years_homeless))) + geom_boxplot()
+
+```
+
+When the fear score increases, the hesitancy of taking vaccine decreases. We can also see a relatively positive relationship between fear score and COVID-19 protective score. People are more likely to follow the protective instructions and take action if their fear score is higher. 
+```{r}
+fp <- la2 %>% select(fear_sum2, sd_sum3, vacc_hes) %>% drop_na()
+
+pairs(table(fp[,1:3]), highlighting = 1, diag_panel_args = list(fill = color2))
+```
+
+### Analysis of Hesitancy of Vaccination among Homelessness based on Limited Response 
+From the bar plot below, the most popular reason of hesitating to have COVID-19 vaccine is the concern and fear of unpleasant vaccination side effects. People also cared about getting more information first before actually taking the dose and some of them refused to get any vaccine, not just COVID-19's. 
+```{r}
+# hes.reason
+
+hes2 <- hes.reason %>% pivot_longer(cols=colnames(hes.reason),
+                                    names_to="reason", values_to="value") %>%
+  group_by(reason) %>%
+  summarize(count = sum(as.numeric(value))) %>%
+  ungroup()
+
+color3 <- brewer.pal(n = 8, name = 'PuBu')
+ggplot(data=hes2, aes(x=reason, y=count)) + geom_col(fill=color3)
+```
+
+The data also contains the response of the question that if the vaccination is provided, whether people would take it. Depending on the plot, we can indicate that people experiencing homelessness who said "Yes" to this question have shown no hesitance in taking vaccination, while those who answered "No" or "Preferred not to answer" had such hesitation. 
+```{r}
+# hesitancy and willingness to take vaccination if offered 
+color4 <- c("#D0D1E6", "#3690C0")
+hes.v <- la2 %>% select(vacc_if, vacc_hes) %>% drop_na()
+ggplot(data=hes.v, aes(x=vacc_if)) + geom_bar(aes(fill=vacc_hes), position = "dodge") + scale_fill_manual(values=color4)
+
+
+```
+
+
+
+

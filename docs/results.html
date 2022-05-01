@@ -52,6 +52,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/parallel-coordinates-2.1.8/parcoords.css" rel="stylesheet" />
+<script src="libs/parcoords-binding-1.0.1/parcoords.js"></script>
+<script src="libs/d3-5.16.0/d3.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 
@@ -73,10 +83,27 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#data-description"><i class="fa fa-check"></i><b>2.1</b> Data Description</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#social-vulnerability-index"><i class="fa fa-check"></i><b>3.1</b> Social Vulnerability Index</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#covid-19-deaths"><i class="fa fa-check"></i><b>3.2</b> COVID-19 Deaths</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca"><i class="fa fa-check"></i><b>3.3</b> 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#geographic-data"><i class="fa fa-check"></i><b>3.4</b> Geographic Data</a></li>
+<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#vaccination-by-race"><i class="fa fa-check"></i><b>3.5</b> Vaccination by Race</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#general-results"><i class="fa fa-check"></i><b>5.1</b> General Results</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#case-study-2021-covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca"><i class="fa fa-check"></i><b>5.2</b> Case Study: 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="results.html"><a href="results.html#analysis-of-hesitancy-of-vaccination-among-homelessness-based-on-limited-response"><i class="fa fa-check"></i><b>5.2.1</b> Analysis of Hesitancy of Vaccination among Homelessness based on Limited Response</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -100,7 +127,48 @@
             <section class="normal" id="section-">
 <div id="results" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Results<a href="results.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="general-results" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> General Results<a href="results.html#general-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Based on the average income map, the pattern of the whole U.S. average income distribution geographically is observable. The range defined is from 20,000 dollars to 55,000 dollars per person every year. The regions with relatively high average income are located in northeastern America, and always concentrated on several adjacent states.
+<img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>We explore the population with low education level measured using the rate of people above 25 years old who have not finished their high school education as the index. The map plot shows the percentage of people above 25 without high school diploma is larger in the south of America than which in the north of America. There is a proper guess that the family education are more popular and developed in wealthy states rather than school education.
+<img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>To quantitatively describe the average income and education level, two dimensional scatter plot presents the association between them. There is a obvious negative association between them, which means when education level of people is lower, the income they earn would be lower.
+<img src="finalproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>The COVID-19 vaccination coverage rates are always greater than 0.5, and there are apparent geographic correlation and distinction. More specifically, vaccination coverage rates are extra high in the northeastern and adjacent states, while people do not show a such strong willing to accept the vaccine. Moreover, the distribution of the vaccination rates are positive related to the distribution of average income above.
+<img src="finalproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<pre><code>## # A tibble: 6 x 7
+##   STATE      perc_without_hs avg_income `percent of white vac~` `percent of bl~`
+##   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                   &lt;chr&gt;           
+## 1 Alabama              0.097     23073. 0.49                    0.51            
+## 2 Alaska               0.047     32531. 0.56                    0.61            
+## 3 Arizona              0.088     23459. 0.6                     0.51            
+## 4 Arkansas             0.092     22443. &lt;NA&gt;                    &lt;NA&gt;            
+## 5 California           0.114     32090. 0.75                    0.66            
+## 6 Colorado             0.058     30695. 0.78                    0.73            
+## # ... with 2 more variables: `percent of Hispanic vaccinted` &lt;chr&gt;,
+## #   `percent of Asian vaccinted` &lt;chr&gt;</code></pre>
+<p>In order to learn about the death rate in COVID-19 pandemic among total 4 U.S. Census Regions, facet plot shows the relationship between death rate, poverty rate and education level. A positive correlation between death rate and poverty rate shown in the South and West Census Region, while Middle and North Census Region has no apparent trend. In addition, all the plots suggest a positive association between education level and death rate.
+<img src="finalproj_files/figure-html/unnamed-chunk-24-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
+</div>
+<div id="case-study-2021-covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Case Study: 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA<a href="results.html#case-study-2021-covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we would specifically pay attention to the attitudes toward COVID-19 among the homelessness in Los Angeles and deal with the demographic data and binary response collected from a related survey. The observable relationship will be presented and concluded below with the statistical graphics.</p>
+<p>Based on the following mosaic plots, it is observable that females are more likely to be anxious about getting COVID-19 than males. People who are doubled up and live in hotels are less worried about COVID-19 than those who are sheltered or unsheltered.<br />
+<img src="finalproj_files/figure-html/unnamed-chunk-25-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+<p>With this limited data, the boxplot presents a increase in COVID-19 protective score among people have been experiencing homelessness for a longer time.
+<img src="finalproj_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>When the fear score increases, the hesitancy of taking vaccine decreases. We can also see a relatively positive relationship between fear score and COVID-19 protective score. People are more likely to follow the protective instructions and take action if their fear score is higher.
+<img src="finalproj_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div id="analysis-of-hesitancy-of-vaccination-among-homelessness-based-on-limited-response" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Analysis of Hesitancy of Vaccination among Homelessness based on Limited Response<a href="results.html#analysis-of-hesitancy-of-vaccination-among-homelessness-based-on-limited-response" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From the bar plot below, the most popular reason of hesitating to have COVID-19 vaccine is the concern and fear of unpleasant vaccination side effects. People also cared about getting more information first before actually taking the dose and some of them refused to get any vaccine, not just COVID-19’s.
+<img src="finalproj_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>The data also contains the response of the question that if the vaccination is provided, whether people would take it. Depending on the plot, we can indicate that people experiencing homelessness who said “yes” to this question have shown no hesitance in taking vaccination, while those who answered “No” or preferred not to answer had such hesitation.
+<img src="finalproj_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 
+</div>
+</div>
 </div>
             </section>
 

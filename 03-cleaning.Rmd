@@ -1,6 +1,21 @@
 # Data transformation
+(with the feature details used the future analysis that might be confused)
 
-Social Vulnerability Index 
+
+## Social Vulnerability Index 
+E_TOTPOP: Population estimate
+
+E_POV: Persons below poverty estimate
+
+EP_POV: Percentage of persons below poverty estimate
+
+E_PCI: Per capita income estimate
+
+E_NOHSDP: Percentage of persons with no high school diploma (age 25+)
+
+E_UNEMP: Civilian (age 16+) unemployed estimate
+
+EP_UNEMP: Unemployment Rate estimate
 ```{r}
 # length(sv$ST) # 3142
 # sum(is.na(sv))
@@ -15,7 +30,10 @@ head(sv2)
 
 ```
 
-COVID-19 Deaths
+## COVID-19 Deaths
+Population: Total population among the corresponding region
+
+Deaths: Number of COVID-19 deaths 
 ```{r}
 cov19.death <- cov19_death %>% dplyr::select(-c(`Notes`, `Census Region Code`, `State Code`, `County Code`, `Race Code`, `Crude Rate`))
 # cov19.death
@@ -26,7 +44,18 @@ head(cov19.death)
 
 ```
 
-2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA
+## 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA
+phq4_dum: The Four-Item Patient Health Questionnaire for Anxiety and Depression
+
+phq4_sum: PHQ4 sum score
+
+fear_sum2: COVID-19 threat index (sum score of wb011, wb012, wb014, wb015), indicating the degree of fear toward COVID-19
+
+sd_sum3: COVID-19 protective behavior (sum score of handwash, sd01_sixfeet, mask_always) 
+
+vacc_hes: Hesitancy toward receiving COVID-19 vaccine? 
+
+vacc_if: If offered COVID-19 vaccine, would you take it?
 ```{r}
 la <- la[-1, ]
 la2 <- la%>% select(age, female, race2, housing2, years_homeless, phq4_dum, 
@@ -42,15 +71,16 @@ hes.reason <- la %>% select(reason_risk, reason_protection,
                             reason_afford) %>% drop_na()
 
 head(la2)
-# hes.reason
+hes.reason
 ```
 
-Geo Data
+## Geographic Data
 ```{r}
 head(shape)
 ```
 
-Vaccination by Race 
+## Vaccination by Race 
+key: percent of vaccinated among race in correspoding region
 ```{r}
 colnames(vaccine_by_race)[1] <- "state"
 colnames(vaccine_by_race)[2] <- "percent of white vaccinted"
@@ -61,6 +91,7 @@ colnames(vaccine_by_race)[5] <- "percent of Asian vaccinted"
 
 vaccine_by_race[(vaccine_by_race)== "NR"] <- NA
 
-colSums(is.na(vaccine_by_race)) %>% sort(decreasing = TRUE)
-vaccine_by_race %>% filter(is.na(`percent of Hispanic vaccinted`)) %>% pull(state)
+# colSums(is.na(vaccine_by_race)) %>% sort(decreasing = TRUE)
+# vaccine_by_race %>% filter(is.na(`percent of Hispanic vaccinted`)) %>% pull(state)
+head(vaccine_by_race)
 ```

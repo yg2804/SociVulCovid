@@ -1,5 +1,31 @@
 # Data sources
-Data description 
+## Data Description
+Social Vulnerability Index: Statistical data of the relative vulnerability in the United States, including socio-economic status, minority, unemployment, etc
+
+Source: https://catalog.data.gov/dataset/social-vulnerability-index-2018-united-states-county 
+
+COVID-19 Deaths: The population of COVID-19 deaths by states and county around the United States
+
+Source: https://wonder.cdc.gov/controller/datarequest/D76;jsessionid=594DDBB7A5D4544027ED97D7A7D5 
+
+2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA: Data collected from a pilot mobile survey among homeless people in Los Angeles includes the demographic background, fear of COVID-19, attitudes of vaccination, etc
+
+Source: https://www.openicpsr.org/openicpsr/project/140701/version/V3/view
+
+Geographic Data: Geographic information of the United States in a shape file.
+
+Source: https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+
+
+US State Vaccinations: The COVID-19 vaccination coverage by states and county around the United States
+
+Source: https://github.com/owid/covid-19-data/blob/master/public/data/vaccinations/us_state_vaccinations.csv 
+
+Data on COVID-19 Vaccinations by Race/Ethnicity: Percentage of total population who have received COVID-19 vaccine in the United States with race data gathered
+
+Source: https://www.kff.org/coronavirus-covid-19/issue-brief/latest-data-on-covid-19-vaccinations-by-race-ethnicity/
+
+
 ```{r}
 library(readxl)
 library(tidyverse)

@@ -1,2 +1,25 @@
 # Conclusion
+Through the exploratory data analysis and statistical data visualization, many interesting insights into the COVID-19 effect are obtained. The main questions that were wished to be answered at the beginning of the project are summarized:
 
+* What are the geographic distributions of education level, average income and vaccination rates in U.S.?
+
+The relatively high average incomes are concentrated on neighboring states in the Northeastern U.S. lower levels of education are higher in the south than in the north of U.S. Vaccination rates are very high in the Northeast and neighboring states, while rates are relatively low in the middle of the country.
+
+* Are there any association between education, poverty level and vaccination rate? 
+
+Yes, the vaccination rate is influenced by levels of education and poverty. It is also distinct in different regions.
+
+* Are there any relationship between the features that we are interested in, including death rate, Census Region, average income, education levels, unemployment rate, poverty rate, vaccination rate?
+
+By creating a interactive plot, the correlations are displayed clearly, some of them have strong associations such as education levels and average income. The vaccinated rate, which is the key feature that we focus on, is negatively associated with poverty rate and death rate. 
+
+* Would income increasing guide people with different races to decide whether to get vaccinated or not? 
+
+We observed that the vaccination rates among ethnic groups are positively correlated with average income in White, Black and Hispanic, but not among Asian.
+
+
+* Is there a different relationship between death rate and poverty rate, as well as education level with death rate in different Census Region? 
+
+Southern and Western Census Region has a strong positive correlation between death rate and poverty rate, while Middle and Northern Census Region has no apparent association. All of Census Regions show positive association between education level and death rate.
+
+After learning about the big picture, the next step could be focusing on the specific region and analyzing the perspective toward COVID-19 and vaccination among people with social vulnerability. The analysis about the attitude of COVID-19 among people experiencing homelessness in Los Angeles can definitely be considered as a sample for the further study.  

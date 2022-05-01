@@ -1,3 +1,21 @@
 # Interactive component
 
+Parallel coordinates plot is interactive and dynamic to compare the correlation of the paired features. In order to explore the relationship between different variables, y axis is set for all the states and x axis refers to different features. 
 
+With the graphs we created before, the relationship between features could be roughly described, but parallel coordinates plot brings stronger evidence to prove that they are actually correlated. For example, the parallel coordinates plot indicates that there is a negative correlation between avg_income(average income) and non_hs_rate(the percentage of people who do not have high school diploma). 
+
+The interesting point we can find is that non_hs_rate has a negative correlation with vaccination rate, which is a meaningful result to show the education can actually influence people to make their decisions about whether to get vaccinated or not. In other words, people with higher education level are more likely to take vaccination. 
+```{r}
+parcoords(dp, rownames = F, reorderable = T , queue = T, 
+          withD3 = TRUE, alpha=0.5)
+
+```
+
+This graph is focusing on deeply explore the correlation between average income and the race among people who are vaccinated. The goal is to figure out whether different income amount will influence people's decision of getting COVID-19 vaccine by race. 
+
+There are different decision making pattern shown by selecting the given race line you are interested in. For instance, there is an apparent rising trend for white people, which presents income increase can give white people stronger confidence or more motivation to get vaccinated. However, the income increase may not play an such important role in decision making about vaccination among Asian. 
+```{r}
+
+ggplotly(sv.new.p)
+
+```

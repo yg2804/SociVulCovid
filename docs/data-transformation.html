@@ -52,6 +52,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/parallel-coordinates-2.1.8/parcoords.css" rel="stylesheet" />
+<script src="libs/parcoords-binding-1.0.1/parcoords.js"></script>
+<script src="libs/d3-5.16.0/d3.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 
@@ -73,10 +83,27 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
-<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
+<li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-sources.html"><a href="data-sources.html#data-description"><i class="fa fa-check"></i><b>2.1</b> Data Description</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-transformation.html"><a href="data-transformation.html#social-vulnerability-index"><i class="fa fa-check"></i><b>3.1</b> Social Vulnerability Index</a></li>
+<li class="chapter" data-level="3.2" data-path="data-transformation.html"><a href="data-transformation.html#covid-19-deaths"><i class="fa fa-check"></i><b>3.2</b> COVID-19 Deaths</a></li>
+<li class="chapter" data-level="3.3" data-path="data-transformation.html"><a href="data-transformation.html#covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca"><i class="fa fa-check"></i><b>3.3</b> 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</a></li>
+<li class="chapter" data-level="3.4" data-path="data-transformation.html"><a href="data-transformation.html#geographic-data"><i class="fa fa-check"></i><b>3.4</b> Geographic Data</a></li>
+<li class="chapter" data-level="3.5" data-path="data-transformation.html"><a href="data-transformation.html#vaccination-by-race"><i class="fa fa-check"></i><b>3.5</b> Vaccination by Race</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#general-results"><i class="fa fa-check"></i><b>5.1</b> General Results</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#case-study-2021-covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca"><i class="fa fa-check"></i><b>5.2</b> Case Study: 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="results.html"><a href="results.html#analysis-of-hesitancy-of-vaccination-among-homelessness-based-on-limited-response"><i class="fa fa-check"></i><b>5.2.1</b> Analysis of Hesitancy of Vaccination among Homelessness based on Limited Response</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -100,7 +127,16 @@
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation<a href="data-transformation.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Social Vulnerability Index</p>
+<p>(with the feature details used the future analysis that might be confused)</p>
+<div id="social-vulnerability-index" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Social Vulnerability Index<a href="data-transformation.html#social-vulnerability-index" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>E_TOTPOP: Population estimate
+E_POV: Persons below poverty estimate
+EP_POV: Percentage of persons below poverty estimate
+E_PCI: Per capita income estimate
+E_NOHSDP: Percentage of persons with no high school diploma (age 25+)
+E_UNEMP: Civilian (age 16+) unemployed estimate
+EP_UNEMP: Unemployment Rate estimate</p>
 <pre><code>## # A tibble: 6 x 14
 ##   ST    STATE   COUNTY    E_TOTPOP E_POV EP_POV E_PCI E_NOHSDP EP_AGE65 EP_AGE17
 ##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
@@ -112,7 +148,11 @@
 ## 6 19    IOWA    Bremer       24782  1901    8.2 32512      623     19.2     22.1
 ## # ... with 4 more variables: EP_MINRTY &lt;dbl&gt;, E_UNEMP &lt;dbl&gt;, EP_UNEMP &lt;dbl&gt;,
 ## #   EP_NOHSDP &lt;dbl&gt;</code></pre>
-<p>COVID-19 Deaths</p>
+</div>
+<div id="covid-19-deaths" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> COVID-19 Deaths<a href="data-transformation.html#covid-19-deaths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Population: Total population among the corresponding region
+Deaths: Number of COVID-19 deaths</p>
 <pre><code>## # A tibble: 6 x 6
 ##   `Census Region`            State       County          Race  Deaths Population
 ##   &lt;chr&gt;                      &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;
@@ -122,7 +162,15 @@
 ## 4 Census Region 1: Northeast Connecticut Hartford Count~ Asia~     15      58650
 ## 5 Census Region 1: Northeast Connecticut Hartford Count~ Blac~    293     152262
 ## 6 Census Region 1: Northeast Connecticut Hartford Count~ White   1421     671879</code></pre>
-<p>2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA</p>
+</div>
+<div id="covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA<a href="data-transformation.html#covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>phq4_dum: The Four-Item Patient Health Questionnaire for Anxiety and Depression
+phq4_sum: PHQ4 sum score
+fear_sum2: COVID-19 threat index (sum score of wb011, wb012, wb014, wb015), indicating the degree of fear toward COVID-19
+sd_sum3: COVID-19 protective behavior (sum score of handwash, sd01_sixfeet, mask_always)
+vacc_hes: Hesitancy toward receiving COVID-19 vaccine?
+vacc_if: If offered COVID-19 vaccine, would you take it?</p>
 <pre><code>## # A tibble: 6 x 15
 ##   Age   Gender Race   Housing years_homeless phq4_dum phq4_sum fear_sum2 sd_sum3
 ##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;  
@@ -135,7 +183,24 @@
 ## # ... with 6 more variables: at02_official_any &lt;chr&gt;,
 ## #   at02__newspapersradioortv &lt;chr&gt;, at02_ff_any &lt;chr&gt;, vacc_hes &lt;chr&gt;,
 ## #   vacc_offered &lt;chr&gt;, vacc_if &lt;chr&gt;</code></pre>
-<p>Geo Data</p>
+<pre><code>## # A tibble: 30 x 8
+##    reason_risk reason_protecti~ reason_informat~ reason_sideeffe~ reason_moreppl
+##    &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;         
+##  1 0           0                0                1                0             
+##  2 0           0                1                0                0             
+##  3 0           0                0                0                0             
+##  4 0           1                0                0                0             
+##  5 0           0                0                0                0             
+##  6 0           0                0                0                0             
+##  7 0           0                0                0                0             
+##  8 0           0                0                1                0             
+##  9 0           0                0                1                0             
+## 10 0           0                0                0                0             
+## # ... with 20 more rows, and 3 more variables: reason_novax &lt;chr&gt;,
+## #   reason_riskgroup &lt;chr&gt;, reason_afford &lt;chr&gt;</code></pre>
+</div>
+<div id="geographic-data" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Geographic Data<a href="data-transformation.html#geographic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <pre><code>## Simple feature collection with 6 features and 14 fields
 ## Geometry type: MULTIPOLYGON
 ## Dimension:     XY
@@ -152,7 +217,10 @@
 ## 6 1      1        44      01219835 44    RI     Rhode Isla~ 00    G4000 A       
 ## # ... with 5 more variables: ALAND &lt;dbl&gt;, AWATER &lt;dbl&gt;, INTPTLAT &lt;chr&gt;,
 ## #   INTPTLON &lt;chr&gt;, geometry &lt;MULTIPOLYGON [°]&gt;</code></pre>
-<p>Vaccination by Race</p>
+</div>
+<div id="vaccination-by-race" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Vaccination by Race<a href="data-transformation.html#vaccination-by-race" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>key: percent of vaccinated among race in correspoding region</p>
 <pre><code>## percent of Hispanic vaccinted    percent of Asian vaccinted 
 ##                            11                            11 
 ##    percent of white vaccinted    percent of black vaccinted 
@@ -163,6 +231,7 @@
 ##  [5] &quot;Maine&quot;         &quot;Missouri&quot;      &quot;Montana&quot;       &quot;Nebraska&quot;     
 ##  [9] &quot;New Jersey&quot;    &quot;West Virginia&quot; &quot;Wyoming&quot;</code></pre>
 
+</div>
 </div>
             </section>
 
