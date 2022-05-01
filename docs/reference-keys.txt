@@ -8,9 +8,15 @@ covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles
 geographic-data
 vaccination-by-race
 missing-values
+covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca-1
+vaccination-by-race-1
 results
 general-results
-case-study-2021-covid-19-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-ca
+case-study-vaccine-attitudes-among-people-experiencing-homelessness-in-los-angeles-in-2021
 analysis-of-hesitancy-of-vaccination-among-homelessness-based-on-limited-response
 interactive-component
+relationship-betweeen-social-vulneraibility-factors-covid-19-deaths-rate-and-vaccination-rate
+relationship-between-average-income-race-and-vaccination-rate
 conclusion
+qa
+next-step

@@ -23,5 +23,5 @@ We observed that the vaccination rates among ethnic groups are positively correl
 
 Southern and Western Census Region has a strong positive correlation between death rate and poverty rate, while Middle and Northern Census Region has no apparent association. All of Census Regions show positive association between education level and death rate.
 
-## Next steps 
+## Next step
 After learning about the big picture, the next step could be focusing on the specific region and analyzing the perspective toward COVID-19 and vaccination among people with social vulnerability. The analysis about the attitude of COVID-19 among people experiencing homelessness in Los Angeles can definitely be considered as a sample for the further study.  
