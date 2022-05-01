@@ -1,5 +1,5 @@
 # Data sources
-## Data Description
+## Data description
 Social Vulnerability Index: Statistical data of the relative vulnerability in the United States, including socio-economic status, minority, unemployment, etc
 
 Source: https://catalog.data.gov/dataset/social-vulnerability-index-2018-united-states-county 

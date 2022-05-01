@@ -1,4 +1,5 @@
 # Missing values
+## 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA
 We noticed that two of our datasets have missing values. For the data of 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA, 619 values are missing. 
 ```{r}
 pd <- la[-1, ]
@@ -108,6 +109,7 @@ ggplot(data=pdvaif_age, aes(x=fct_reorder(as.factor(age_range), percent_na), y=p
 
 ```
 
+## Vaccination by Race  
 Based on missing value heatmap, the pattern of missing values can be clearly observed and summarized. The x axis is the percentage of people with different race who got vaccinated, and y axis contains the states. 
 
 There are 7 states in total having missing values. There are missing values for every columns, and the missing pattern of percent of black vaccinated and percent of white vaccinated are the same. In other words, if values missing in the former, then the missing values are more likely to appear the later one. 

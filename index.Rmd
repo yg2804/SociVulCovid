@@ -7,3 +7,6 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+In this project, we mainly study the relationship between social vulnerability index and COVID-19 deaths and vaccination rate in 2020-2021, and how people respond to the situation of COVID-19 expanding around the United States. 
+
+The results depend on exploratory data analysis and data visualization. We focus on the features that may influence people's decisions toward COVID-19 related events and their importance. An in-depth analysis is performed with different statistical graphics. Since this is a worldwide problem and has captured a lot of attention, the analysis would support us to understand the distribution, association and trends of the relevant features, and people's behavior and attitudes during this period.  

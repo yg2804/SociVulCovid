@@ -1,5 +1,5 @@
 # Results
-## General Results 
+## General results 
 Based on the average income map, the pattern of the whole U.S. average income distribution geographically is observable. The range defined is from 20,000 dollars to 55,000 dollars per person every year. The regions with relatively high average income are located in northeastern America, and always concentrated on several adjacent states. 
 ```{r}
 library(tigris)
@@ -160,7 +160,7 @@ sv.cov.nhs
 
 ```
 
-## Case Study: 2021 COVID-19 Vaccine Attitudes among People Experiencing Homelessness in Los Angeles, CA
+## Case study: vaccine attitudes among people experiencing homelessness in Los Angeles in 2021
 In this section, we would specifically pay attention to the attitudes toward COVID-19 among the homelessness in Los Angeles and deal with the demographic data and binary response collected from a related survey. The observable relationship will be presented and concluded below with the statistical graphics. 
 
 Based on the following mosaic plots, it is observable that females are more likely to be anxious about getting COVID-19 than males. People who are doubled up and live in hotels are less worried about COVID-19 than those who are sheltered or unsheltered.  

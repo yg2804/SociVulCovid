@@ -1,5 +1,5 @@
 # Interactive component
-
+## Relationship betweeen social vulneraibility factors, COVID-19 deaths rate and vaccination rate 
 Parallel coordinates plot is interactive and dynamic to compare the correlation of the paired features. In order to explore the relationship between different variables, y axis is set for all the states and x axis refers to different features. 
 
 With the graphs we created before, the relationship between features could be roughly described, but parallel coordinates plot brings stronger evidence to prove that they are actually correlated. For example, the parallel coordinates plot indicates that there is a negative correlation between avg_income(average income) and non_hs_rate(the percentage of people who do not have high school diploma). 
@@ -11,6 +11,7 @@ parcoords(dp, rownames = F, reorderable = T , queue = T,
 
 ```
 
+## Relationship between average income, race, and vaccination rate 
 This graph is focusing on deeply explore the correlation between average income and the race among people who are vaccinated. The goal is to figure out whether different income amount will influence people's decision of getting COVID-19 vaccine by race. 
 
 There are different decision making pattern shown by selecting the given race line you are interested in. For instance, there is an apparent rising trend for white people, which presents income increase can give white people stronger confidence or more motivation to get vaccinated. However, the income increase may not play an such important role in decision making about vaccination among Asian. 
