@@ -119,7 +119,7 @@ vaccine_race <- vaccine_by_race %>%
     mutate(missing = ifelse(is.na(value), "yes", "no"))
 ggplot(vaccine_race, aes(x = key, y = fct_rev(state), fill = missing)) +
   geom_tile(color = "white") + 
-  ggtitle("mtcars with NAs added") +
+  ggtitle("Missing pattern with NAs") +
   scale_fill_viridis_d() + 
   theme_bw()
 

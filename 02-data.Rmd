@@ -46,7 +46,7 @@ library(plotly)
 library(vcd)
 library(RColorBrewer)
 
-setwd("C:\\Users\\irene\\Desktop\\5293 graphics\\final_project")
+setwd("C:\\Users\\joj\\Desktop\\data\\data")
 shape <- read_sf("tl_2021_us_state\\tl_2021_us_state.shp")
 sv <- read_csv("Social_Vulnerability_Index_2018_United_States_county.csv")
 cov19_death <- read_tsv("covid_death.txt")
